@@ -1,76 +1,109 @@
-# App patterns: Topik, Leaf, MyCloset
+# Subscription Product Patterns
 
-Use these app-specific heuristics when the user asks for Adapty/report review plus implementation.
+Use this file when the user wants benchmark-backed interpretation that should apply across different subscription products, not just one app.
 
-## Leaf
+## 1. Utility or productivity subscriptions
 
-Positioning:
-- Leaf is not a subscription-first app.
-- Core model is freemium with a one-time unlock, not recurring subscription.
-- If the user asks for Adapty work on Leaf, first verify whether the request is actually about subscription analytics, experimental paywalls, or future monetization exploration.
+Typical shape:
+- users want a fast time-to-value path
+- paywalls often appear after one useful action or during onboarding
+- yearly plan usually needs a strong value anchor to win against monthly or weekly
 
-Implications:
-- Do not assume recurring pricing experiments are appropriate.
-- Focus on unlock conversion, paywall clarity, and free-limit communication.
-- If an Adapty request conflicts with the established one-time unlock positioning, flag that tension directly.
+Common failure modes:
+- paywall shown before the user experiences clear value
+- pricing is visible but the product outcome is still vague
+- too many plans with weak differentiation
+- annual exists but is not framed as the default economic choice
 
-Good questions for Leaf:
-- Is the free limit understandable?
-- Is the one-time unlock value obvious?
-- Are paid ads sending users into a weak unlock funnel?
-- Are `paywall_shown`, `paywall_dismissed`, and unlock events instrumented cleanly?
+Useful questions:
+- Does the user understand what gets better after subscribing?
+- Is the first paywall shown before or after a real value moment?
+- Is the default plan selection helping or hurting conversion quality?
+- Does the yearly plan feel like the intended choice?
 
-## Topik
+## 2. Content, learning, or coaching subscriptions
 
-Positioning:
-- Topik uses recurring subscription logic and has both onboarding and activation paywall surfaces.
-- Repo contains multiple paywall implementations and trial-centric copy.
+Typical shape:
+- users need confidence that the product will stay useful beyond the first session
+- trial framing often matters more than direct price framing
+- retention quality matters as much as front-door conversion
 
-Known repo signals:
-- onboarding paywall in `Apps/TopikApp/Features/Onboarding/OnboardingFlowView.swift`
-- main paywall in `Apps/TopikApp/Features/Subscription/PaywallView.swift`
-- activation paywall in `Apps/TopikApp/Features/Subscription/ActivationPaywallFlowView.swift`
+Common failure modes:
+- weak explanation of what continues after trial start
+- vague premium promise with no concrete learning or content outcome
+- strong trial starts but weak trial-to-paid conversion
+- onboarding paywalls that oversell before trust is earned
 
-Implications:
-- Compare performance by paywall entry point, not just by product.
-- Watch for inconsistent trial messaging across surfaces.
-- Check whether onboarding and activation paywalls use the same plan defaults, badges, and pricing logic.
-- Validate that App Review-safe wording still leaves the premium path compelling.
+Useful questions:
+- Is trial messaging concrete and honest?
+- Does the user know what they will get after subscribing?
+- Are trial starts masking poor downstream conversion quality?
+- Is the paywall triggered before trust is established?
 
-Good questions for Topik:
-- Which paywall converts best: onboarding or activation?
-- Does trial framing outperform direct premium framing?
-- Is yearly sufficiently anchored versus monthly?
-- Does the pet-health value prop stay concrete, or drift generic?
+## 3. Habit, lifestyle, or personal tracking subscriptions
 
-## MyCloset
+Typical shape:
+- users often arrive with curiosity but not strong purchase intent
+- activation and retention depend on routine formation
+- weekly pricing can lift starts but worsen long-term value if the product is not sticky enough
 
-Positioning:
-- Freemium subscription app using StoreKit 2.
-- Recently changed locally from monthly/yearly to weekly/annual in code and local StoreKit config.
+Common failure modes:
+- hard gating too early kills activation
+- subscription promise is broader than the actual day-one experience
+- low-friction entry plan absorbs users who never develop a habit
+- analytics track purchase events but not habit-building milestones
 
-Known repo signals:
-- `FitCheck/Services/Subscription/SubscriptionManager.swift`
-- `FitCheck/Views/Settings/SubscriptionView.swift`
-- `FitCheck/Views/Onboarding/OnboardingContainerView.swift`
-- `FitCheck/Resources/Subscription.storekit`
-- existing launch/docs may still reference older monthly/yearly assumptions
+Useful questions:
+- Is the paywall helping commitment or just interrupting activation?
+- Are there enough pre-subscription value moments to justify recurring billing?
+- Is weekly pricing becoming a low-LTV sink?
+- Are habit-formation events tracked before and after paywall exposure?
 
-Implications:
-- First verify whether App Store Connect metadata and product setup match local code.
-- Treat stale monthly/yearly references as a possible implementation/config mismatch.
-- Evaluate whether a hard onboarding paywall is helping or hurting based on available funnel data.
-- Weekly pricing can increase front-door conversion but worsen retention quality, so watch downstream churn closely.
+## 4. Freemium plus subscription hybrids
 
-Good questions for MyCloset:
-- Did hard-gating onboarding improve paid starts, or just suppress activation?
-- Is annual framed strongly enough to avoid weekly becoming the default low-LTV sink?
-- Are product IDs, copy, and App Store Connect assets aligned?
-- Is the app still promising a generous freemium story while gating too early?
+Typical shape:
+- some value remains free, but premium unlocks more depth, speed, volume, or convenience
+- pricing clarity matters because users compare the free tier against paid value directly
+- packaging and limits matter as much as copy
 
-## Cross-app interpretation rules
+Common failure modes:
+- free tier is too generous, making premium weak
+- free tier is too restrictive, making the app feel bait-and-switch
+- paywall copy does not match actual package or entitlement logic
+- store metadata and product wiring drift from product messaging
 
-- Always distinguish one-time unlock economics from subscription economics.
-- Always separate paywall conversion from subscription quality, churn and renewal.
-- Never recommend a pricing/layout experiment without checking whether the repo and store configuration can actually support it.
-- If the codebase and store metadata disagree, fix the mismatch before trying to interpret performance.
+Useful questions:
+- Is the free tier strong enough to create trust but weak enough to justify paid?
+- Are limits concrete and understandable?
+- Do the UI, store setup, and analytics all describe the same premium model?
+- Is the premium plan framed around outcome or just features?
+
+## 5. Web subscription products and SaaS billing flows
+
+Typical shape:
+- pricing pages, checkout, and upgrade prompts replace mobile paywalls
+- billing intervals, seat logic, and upgrade timing often matter more than flashy copy
+- plan comparison clarity is usually a bigger lever than visual polish
+
+Common failure modes:
+- pricing page hides the real buyer choice
+- monthly default remains sticky because annual savings are weakly expressed
+- upgrade prompt appears before the user hits a meaningful limit
+- checkout has friction that is misdiagnosed as pricing failure
+
+Useful questions:
+- Is the pricing page structured around the real decision the user is making?
+- Is annual meaningfully anchored against monthly?
+- Are upgrade prompts triggered at the right limit or value moment?
+- Is checkout friction being confused with poor offer quality?
+
+## Cross-pattern interpretation rules
+
+- Separate paywall or pricing-page conversion from subscription quality, renewal, and churn.
+- Do not recommend a pricing or UX change without checking whether the product setup can support it.
+- If product messaging, store setup, billing logic, and analytics disagree, treat that mismatch as a first-order problem.
+- Prefer recommendations that improve clarity, instrumentation, and plan framing before more exotic experimentation.
+
+## Bundled examples
+
+The skill includes some historical example patterns from products like Topik, Leaf, and MyCloset. Use them as examples, not as the default lens for every new project.

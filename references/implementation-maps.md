@@ -2,55 +2,89 @@
 
 Use this file when the user wants actual changes made after analysis.
 
-## Topik
+This file is meant to help map monetization findings into real code surfaces across different product types.
 
-Likely code surfaces:
-- onboarding paywall: `Apps/TopikApp/Features/Onboarding/OnboardingFlowView.swift`
-- main paywall: `Apps/TopikApp/Features/Subscription/PaywallView.swift`
-- activation paywall: `Apps/TopikApp/Features/Subscription/ActivationPaywallFlowView.swift`
-- diagnostics / loaded products visibility: `Apps/TopikApp/Root/TopikRootView.swift`
+## 1. Mobile app subscription surfaces
+
+Typical code surfaces:
+- onboarding flow
+- paywall view
+- subscription or entitlement manager
+- product-loading or package-selection layer
+- settings or manage-subscription screen
+- analytics event definitions
 
 Typical changes:
 - default plan selection
 - trial copy consistency
-- yearly anchor / badge framing
+- yearly anchor or badge framing
 - onboarding vs activation trigger logic
 - restore / terms / privacy visibility
+- product ID and package alignment
 - analytics event coverage by paywall entry point
 
-## MyCloset
+## 2. Web app or SaaS subscription surfaces
 
-Likely code surfaces:
-- subscription products and entitlement handling: `FitCheck/Services/Subscription/SubscriptionManager.swift`
-- paywall UI: `FitCheck/Views/Settings/SubscriptionView.swift`
-- onboarding gate: `FitCheck/Views/Onboarding/OnboardingContainerView.swift`
-- local product config: `FitCheck/Resources/Subscription.storekit`
-
-Typical changes:
-- weekly vs annual presentation
-- featured/default plan logic
-- onboarding hard-gate behavior
-- trial/billing wording accuracy
-- stale product IDs or metadata alignment
-- analytics around onboarding paywall conversion and downstream retention
-
-## Leaf
-
-Likely code surfaces:
-- paywall/unlock UI: `Leaf/Leaf/Views/PaywallView.swift`
-- app/root flow depending on context
+Typical code surfaces:
+- pricing page
+- upgrade modal or upgrade route
+- checkout session creation
+- billing portal integration
+- entitlement middleware or access guards
+- analytics events around pricing page, checkout, and upgrade prompts
 
 Typical changes:
-- one-time unlock framing
-- free-limit communication
-- unlock CTA clarity
-- paywall timing after intent moments
-- event instrumentation for unlock funnel
+- pricing table structure
+- default billing interval
+- annual savings framing
+- CTA copy near plan comparison
+- upgrade timing after limit hits
+- checkout step reduction
+- plan metadata alignment between frontend and billing backend
 
-## Store and config checks
+## 3. Freemium gating and feature access
+
+Typical code surfaces:
+- feature flags or entitlement checks
+- usage limit counters
+- gating overlays or limit-reached prompts
+- onboarding completion gates
+- server responses or local state that expose remaining quota
+
+Typical changes:
+- free-tier limit clarity
+- paywall timing after a meaningful value moment
+- hard-gate vs soft-gate behavior
+- clearer explanation of what becomes paid
+- consistent premium feature naming across app and store
+
+## 4. Analytics and instrumentation
+
+Typical code surfaces:
+- analytics client wrappers
+- event enums or event schemas
+- paywall impression and dismissal events
+- checkout start and purchase completion events
+- trial start and renewal quality events
+- activation milestones that happen before purchase
+
+Typical changes:
+- add paywall entry-point attribution
+- separate onboarding paywall and activation paywall metrics
+- track selected package before purchase
+- track downstream quality after purchase, not just top-of-funnel conversion
+- align event names with the actual billing logic and UI states
+
+## 5. Store and billing configuration checks
 
 Before changing UI recommendations into code:
-- verify store products/packages really exist
-- verify product IDs match code
+- verify products or plans really exist
+- verify product IDs or price IDs match code
 - verify trial settings match copy
-- verify region pricing assumptions are possible in store configuration
+- verify region pricing assumptions are possible in the billing system
+- verify the subscription interval shown in UI matches the real billing interval
+- verify checkout and entitlement logic reflect the same plan structure
+
+## Bundled product-specific examples
+
+The skill has been used on products like Topik, MyCloset, and Leaf. Those examples are useful reference points, but they should not override the more general mapping above when the current project is a different kind of subscription product.
