@@ -1,29 +1,29 @@
 ---
 name: adapty-subscription-optimizer
-description: Analyze Adapty subscription reports, exports, paywalls, products, experiments, and renewal/churn signals, then identify what to improve and help implement the fixes in an app codebase. Use when a user asks to review Adapty performance, inspect subscription funnels, diagnose weak conversion or retention, improve pricing/package strategy, refine paywall timing/copy/layout, or turn Adapty findings into concrete product, analytics, and code changes.
+description: Analyze Adapty subscription reports, paywalls, products, pricing, experiments, and renewal or churn signals, then identify what to improve and help implement the fixes in any subscription product. Use when a user asks to review Adapty performance, inspect funnels, diagnose weak conversion or retention, improve pricing or package strategy, refine paywall timing or copy, or turn benchmark findings into concrete product, analytics, UX, web, or app changes.
 ---
 
 # Adapty Subscription Optimizer
 
-Review Adapty data, find the highest-leverage subscription improvements, and convert findings into concrete implementation work in the target app.
+Review Adapty data, find the highest-leverage subscription improvements, and convert findings into concrete implementation work in the target product.
 
 ## Quick start
 
 1. Identify what inputs are available:
-   - Adapty CSV/JSON export
-   - dashboard screenshots
+   - Adapty dashboard screenshots
    - manually pasted metrics
-   - app repo with paywall/subscription code
+   - exported numbers copied into markdown or chat
+   - repo or codebase with subscription/paywall logic
    - bundled benchmark context from `references/adapty-benchmark-facts.md`
 2. Read `references/adapty-benchmark-facts.md` first. Treat it as the strict benchmark source of truth.
 3. Use `references/adapty-benchmarks-2026-summary.md` as the default readable benchmark companion.
 4. Use `references/adapty-benchmarks-2026.md` only for backup provenance.
-5. If the user does not provide a fresh export, still proceed using the bundled benchmark references and whatever app/paywall context is available. Do not block on an external import when the request is strategy, review, or improvement planning.
-6. Summarize the available app data first, then diagnose the bottleneck.
-7. Read `references/app-patterns.md` when the target app is Topik, Leaf, or MyCloset.
-8. Read `references/onboarding-paywall-interpretation.md` when the user wants actionable onboarding/paywall strategy.
+5. If the user does not provide fresh Adapty data, still proceed using the bundled benchmark references and whatever product, paywall, pricing, or repo context is available. Do not block on an external import when the request is strategy, review, or improvement planning.
+6. Summarize the available product data first, then diagnose the bottleneck.
+7. Read `references/app-patterns.md` when a bundled example pattern is relevant, but do not assume the product is mobile-only.
+8. Read `references/onboarding-paywall-interpretation.md` when the user wants actionable onboarding or paywall strategy.
 9. Use `references/output-template.md` for the final response shape.
-10. Read `references/implementation-maps.md` before making repo changes.
+10. Read `references/implementation-maps.md` before making repo changes when a concrete codebase is involved.
 11. Prioritize the top 1-3 improvements, not an unfocused laundry list.
 12. If the user wants changes made, inspect the repo and implement the most justified fixes.
 
@@ -33,20 +33,14 @@ Review Adapty data, find the highest-leverage subscription improvements, and con
 
 This skill should work in two modes:
 
-- **Bundled-reference mode:** default fallback when no fresh Adapty export is provided. Use the bundled markdown references in `references/` and whatever app, screenshot, or repo context is available.
-- **Fresh-export mode:** when the user provides a new Adapty CSV or JSON export, use it as the primary performance input.
+- **Bundled-reference mode:** default fallback when no fresh Adapty export is provided. Use the bundled markdown references in `references/` and whatever product, screenshot, pricing page, paywall, or repo context is available.
+- **Fresh-data mode:** when the user provides newer Adapty metrics, screenshots, or pasted report details, use them as the primary performance input.
 
-If the user provides a CSV or JSON export, run:
+This skill should not depend on a helper script. Treat the bundled markdown files as the default working substrate.
 
-```bash
-python3 /Users/berkerceylan/.agents/skills/adapty-subscription-optimizer/scripts/analyze_adapty_export.py <export-file>
-```
+If the user does not provide fresh Adapty data, do not ask for it unless it is genuinely required for the requested precision level. The bundled benchmark markdown files are part of the skill and should be enough for baseline guidance, diagnosis framing, and improvement recommendations.
 
-Use the script for a quick structural summary only. Do not overstate precision. The script is meant to accelerate inspection, not replace judgment.
-
-If the user does not provide a fresh export, do not ask for one unless it is genuinely required for the requested precision level. The bundled benchmark markdown files are part of the skill and should be enough for baseline guidance, diagnosis framing, and improvement recommendations.
-
-If the user provides screenshots instead of exports, inspect them directly and extract:
+If the user provides screenshots or pasted metrics instead of exports, inspect them directly and extract:
 - products/packages
 - paywall names
 - conversion metrics
@@ -61,7 +55,7 @@ Use `references/improvement-checklist.md` after the initial summary.
 Read `references/adapty-benchmark-facts.md` before making any benchmark-backed recommendation.
 Read `references/adapty-benchmarks-2026-summary.md` only for convenience.
 Read `references/adapty-benchmarks-2026.md` only when you need backup provenance.
-Read `references/app-patterns.md` before making app-specific recommendations for Topik, Leaf, or MyCloset.
+Read `references/app-patterns.md` when the current product resembles one of the bundled example patterns, but keep the recommendations general enough to apply across mobile apps, web apps, SaaS products, and hybrid subscription products.
 Read `references/onboarding-paywall-interpretation.md` when turning PDF facts into strategy.
 
 Classify the dominant issue into one or more buckets:
@@ -90,15 +84,17 @@ For each recommendation, explain:
 
 When the user wants changes made, inspect the target repo and map the recommendation to actual files.
 
-Use `references/implementation-maps.md` before changing code.
+Use `references/implementation-maps.md` when it helps, but do not assume a specific stack.
 Typical implementation targets include:
-- paywall view copy/layout
+- paywall view copy or layout
 - default package selection
 - onboarding gating logic
-- feature-gate timing
+- pricing table structure
+- checkout or subscription CTA placement
 - analytics event tracking
 - restore / terms / privacy links
 - StoreKit / RevenueCat / Adapty product wiring
+- Stripe or web subscription flow wiring
 
 When implementing:
 - prefer the smallest high-confidence change set first
@@ -131,8 +127,6 @@ Escalate or warn when you see:
 ## Resources
 
 ### scripts/
-- `analyze_adapty_export.py` - export analyzer for CSV/JSON files with detected funnel, revenue, paywall, product, country, and platform summaries
-
 ### references/
 - `adapty-benchmark-facts.md` - strict PDF-only benchmark facts that the skill should read first
 - `adapty-benchmarks-2026-summary.md` - readable companion summary of the PDF facts
