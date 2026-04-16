@@ -14,21 +14,27 @@ Review Adapty data, find the highest-leverage subscription improvements, and con
    - dashboard screenshots
    - manually pasted metrics
    - app repo with paywall/subscription code
-   - benchmark context from `references/adapty-benchmark-facts.md`
+   - bundled benchmark context from `references/adapty-benchmark-facts.md`
 2. Read `references/adapty-benchmark-facts.md` first. Treat it as the strict benchmark source of truth.
-3. Use `references/adapty-benchmarks-2026-summary.md` only as a quick readable companion.
+3. Use `references/adapty-benchmarks-2026-summary.md` as the default readable benchmark companion.
 4. Use `references/adapty-benchmarks-2026.md` only for backup provenance.
-5. Summarize the app data first, then diagnose the bottleneck.
-6. Read `references/app-patterns.md` when the target app is Topik, Leaf, or MyCloset.
-7. Read `references/onboarding-paywall-interpretation.md` when the user wants actionable onboarding/paywall strategy.
-8. Use `references/output-template.md` for the final response shape.
-9. Read `references/implementation-maps.md` before making repo changes.
-10. Prioritize the top 1-3 improvements, not an unfocused laundry list.
-11. If the user wants changes made, inspect the repo and implement the most justified fixes.
+5. If the user does not provide a fresh export, still proceed using the bundled benchmark references and whatever app/paywall context is available. Do not block on an external import when the request is strategy, review, or improvement planning.
+6. Summarize the available app data first, then diagnose the bottleneck.
+7. Read `references/app-patterns.md` when the target app is Topik, Leaf, or MyCloset.
+8. Read `references/onboarding-paywall-interpretation.md` when the user wants actionable onboarding/paywall strategy.
+9. Use `references/output-template.md` for the final response shape.
+10. Read `references/implementation-maps.md` before making repo changes.
+11. Prioritize the top 1-3 improvements, not an unfocused laundry list.
+12. If the user wants changes made, inspect the repo and implement the most justified fixes.
 
 ## Workflow
 
 ### 1. Normalize the input
+
+This skill should work in two modes:
+
+- **Bundled-reference mode:** default fallback when no fresh Adapty export is provided. Use the bundled markdown references in `references/` and whatever app, screenshot, or repo context is available.
+- **Fresh-export mode:** when the user provides a new Adapty CSV or JSON export, use it as the primary performance input.
 
 If the user provides a CSV or JSON export, run:
 
@@ -38,6 +44,8 @@ python3 /Users/berkerceylan/.agents/skills/adapty-subscription-optimizer/scripts
 
 Use the script for a quick structural summary only. Do not overstate precision. The script is meant to accelerate inspection, not replace judgment.
 
+If the user does not provide a fresh export, do not ask for one unless it is genuinely required for the requested precision level. The bundled benchmark markdown files are part of the skill and should be enough for baseline guidance, diagnosis framing, and improvement recommendations.
+
 If the user provides screenshots instead of exports, inspect them directly and extract:
 - products/packages
 - paywall names
@@ -45,7 +53,7 @@ If the user provides screenshots instead of exports, inspect them directly and e
 - trial and renewal signals
 - platform/country splits
 
-If the metrics are incomplete, say what is missing and continue with the strongest available read.
+If the metrics are incomplete, say what is missing and continue with the strongest available read. Default to a useful answer, not a blocked answer.
 
 ### 2. Diagnose the main problem
 

@@ -1,47 +1,45 @@
 # Adapty Subscription Optimizer
 
-A public Agent Skill for analyzing Adapty subscription performance and turning weak monetization signals into concrete product, paywall, pricing, and implementation improvements.
+Analyze Adapty exports, paywalls, pricing, and churn signals, then turn them into concrete product and implementation decisions.
 
-## What this skill does
+This skill is built for agents working with subscription apps. It can use a fresh Adapty export when you have one, but it also works without external imports by using the bundled benchmark and interpretation markdown files included in this repo.
 
-This skill helps an AI agent:
+## Example prompts
 
-- analyze Adapty exports and performance snapshots
-- inspect paywall conversion, trial start, renewal, and churn patterns
-- compare results against benchmark guidance
-- identify the main monetization bottleneck
-- recommend the highest-leverage improvements
-- translate findings into real product or code changes
+- Analyze this Adapty export and tell me what is actually broken in my funnel.
+- Review my onboarding paywall and tell me whether pricing or timing is the real problem.
+- Compare this app's monetization setup against the bundled Adapty benchmarks.
+- I updated the benchmark report, use the newest reference material and reassess my paywall strategy.
+- Look at this app repo and tell me what to change in the paywall, packages, or analytics.
+- Turn these Adapty findings into concrete implementation tasks for the app.
 
-It is especially useful when you want more than a generic "improve your paywall" answer and need a structured diagnosis tied to actual data.
+## Who is this for?
 
-## Best use cases
+- developers shipping subscription apps
+- indie builders trying to improve conversion or retention
+- product engineers working on onboarding and paywalls
+- growth-minded app teams that want sharper analysis than generic monetization advice
+- agents that need bundled benchmark context instead of depending on live external research every time
 
-Use this skill when you want an agent to:
+## What is included
 
-- review an Adapty CSV or JSON export
-- diagnose low paywall conversion
-- understand whether pricing or UX is the real issue
-- improve onboarding paywall timing and messaging
-- compare multiple products or packages
-- turn monetization findings into implementation work in an app repo
+- `SKILL.md` for the workflow and trigger instructions
+- `references/` for benchmark facts, summaries, app patterns, and output structure
+- `scripts/analyze_adapty_export.py` for quick export inspection
 
-## Included resources
+## Default behavior
 
-- `SKILL.md` — core workflow and usage instructions
-- `references/` — benchmark notes, app patterns, interpretation guides, and output templates
-- `scripts/analyze_adapty_export.py` — helper script for summarizing Adapty export structure
+The skill is designed to work in two modes:
+
+1. **Fresh-export mode**
+   - Use a new Adapty CSV or JSON export if one is provided.
+
+2. **Bundled-reference mode**
+   - If no fresh export is provided, the skill should still work using the bundled markdown references in this repo.
+   - This means users can install and use it immediately without importing extra files first.
 
 ## Install
-
-With the skills CLI:
 
 ```bash
 npx skills add https://github.com/bbceylan/adapty-subscription-optimizer --skill adapty-subscription-optimizer
 ```
-
-## Notes
-
-- This repo is the install source for the skill.
-- The main benchmark logic in this version is tailored around the bundled reference material.
-- The skill was created to help with real onboarding, paywall, and subscription optimization work across apps like Topik, Leaf, and MyCloset.
