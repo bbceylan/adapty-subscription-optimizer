@@ -106,4 +106,4 @@ Useful questions:
 
 ## Bundled examples
 
-The skill includes some historical example patterns from products like Topik, Leaf, and MyCloset. Use them as examples, not as the default lens for every new project.
+The skill may include historical example patterns from real products. Use them as examples, not as the default lens for every new project.

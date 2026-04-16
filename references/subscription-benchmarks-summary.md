@@ -1,11 +1,12 @@
 # Subscription Benchmarks 2026 - Summary
 
 Source benchmark document:
-- `/Users/berkerceylan/Desktop/In-App Subscription Benchmarks 2026 — Pricing, Сonversion & LTV Data.pdf`
+- benchmark PDF bundled into the skill's source material during development
 
 This is the primary readable benchmark file for the skill.
 Use it first for onboarding, pricing, trial, and paywall recommendations.
 If deeper provenance is needed, fall back to `subscription-benchmarks-source-notes.md`.
+Treat this file as the bridge between raw benchmark facts and practical strategy.
 
 ## Report scope
 
@@ -178,6 +179,6 @@ These are still interpretations, but they are grounded in the benchmark above.
 
 When the skill is used:
 1. read this file early
-2. use it as a benchmark source of truth for benchmark-backed recommendations
+2. use it as the main readable benchmark layer for benchmark-backed recommendations
 3. if real product data conflicts with these benchmarks, prioritize product data and explain the contrast clearly
-4. only use generic internet wisdom when the user explicitly asks for broader research
+4. only use broader generic subscription advice when the user explicitly asks for wider research

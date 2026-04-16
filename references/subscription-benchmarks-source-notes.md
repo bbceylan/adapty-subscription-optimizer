@@ -4,9 +4,10 @@ Source document used during skill development:
 - local benchmark PDF
 - local workspace copy of the same benchmark PDF
 
-This file exists as backup provenance and a rougher benchmark note layer.
+This file exists as backup provenance and a rough benchmark note layer.
 Use `subscription-benchmark-facts.md` first for strict claims.
 Use `subscription-benchmarks-summary.md` first for readable strategy guidance.
+Use this file when an LLM needs extra context without promoting rough notes into hard claims.
 
 ## Canonical benchmark takeaways
 
@@ -69,7 +70,7 @@ Interpretation rule:
 
 ## Practical use inside the skill
 
-- Use this file when the user wants more provenance or a rougher note layer.
+- Use this file when the user wants more provenance or an extra benchmark context layer.
 - Do not quote this file over `subscription-benchmark-facts.md` when precision matters.
 - Keep direct benchmark claims in the stricter facts file.
 - Keep strategy advice in the summary and playbook files.

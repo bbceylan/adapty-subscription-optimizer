@@ -87,4 +87,4 @@ Before changing UI recommendations into code:
 
 ## Bundled product-specific examples
 
-The skill has been used on products like Topik, MyCloset, and Leaf. Those examples are useful reference points, but they should not override the more general mapping above when the current project is a different kind of subscription product.
+The skill may include examples from real products. Those examples can be useful reference points, but they should not override the more general mapping above when the current project is a different kind of subscription product.
