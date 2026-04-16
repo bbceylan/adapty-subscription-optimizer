@@ -1,19 +1,19 @@
-# Adapty Benchmark Facts - PDF Only
+# Subscription Benchmark Facts
 
-Source PDF only:
-- `/Users/berkerceylan/Desktop/In-App Subscription Benchmarks 2026 — Pricing, Сonversion & LTV Data.pdf`
-- workspace copy: `/Users/berkerceylan/.openclaw/workspace/adapty-benchmarks-2026.pdf`
+Source benchmark document used to build this skill:
+- local benchmark PDF used during development
+- local workspace copy of the same benchmark PDF
 
 Use this file as the strict benchmark reference. Do not add benchmark claims beyond what is captured here unless the user explicitly asks for broader research.
 
-## Scope stated in the PDF
+## Scope stated in the benchmark document
 
 - 16,000+ apps
-- $3B in subscription revenue through Adapty
+- $3B in subscription revenue
 - analysis covers 2025
 - revenue is gross, in USD
 - mostly Apple App Store data, with Google Play used where store comparisons are shown
-- segmented by region, billing cycle, and acquisition type (trial vs direct)
+- segmented by region, billing cycle, and acquisition type, trial vs direct
 - some sections also filter by paywall type and country
 - includes lifetime subscriptions where applicable
 
@@ -37,10 +37,10 @@ Categories named:
 ## Explicit benchmark facts from extracted pages
 
 ### LTV and plan mix
-- Weekly plans with trials have the highest 12-month LTV
-- Weekly plans grew from 43.3% of app revenue two years ago to 55.5%
-- Adding a trial to weekly lifts one-year LTV from $7.40 to $54.50
-- The report calls that a 636% increase
+- Weekly plans with trials have the highest 12-month LTV.
+- Weekly plans grew from 43.3% of app revenue two years ago to 55.5%.
+- Adding a trial to weekly lifts one-year LTV from $7.40 to $54.50.
+- The benchmark document describes that as a 636% increase.
 
 ### Trial guidance by category
 Trials boost annual subscription LTV in:
@@ -76,7 +76,7 @@ Top one-year LTV values explicitly extracted:
 - Mexico: $17.6
 - Chile: $15.3
 
-Additional regional statements from the PDF:
+Additional regional statements from the benchmark document:
 - each of the top 3 European countries outperforms the US in median LTV
 - top LATAM countries are 35% lower than top European ones
 - European prices can run up to 40% higher than North America in some segments
@@ -93,36 +93,36 @@ Median one-year install LTV:
 - Lifestyle: $0.70
 - Entertainment: $0.59
 
-The PDF also states install LTV varies about 2x across categories.
+The benchmark document also states install LTV varies about 2x across categories.
 
 ### Utilities-specific fact
-- Utilities lead all categories in long-term LTV
-- Typical first-year LTV in Utilities is $68.90
-- The report says trials must be present for this result
-- Utilities lead all categories in retention
+- Utilities lead all categories in long-term LTV.
+- Typical first-year LTV in Utilities is $68.90.
+- Trials must be present for this result.
+- Utilities lead all categories in retention.
 
 ### Market structure facts
-- Top 10% of apps earn 95% of all revenue
-- This concentration grew from 92.7% in 2023
-- Newer apps already earn roughly 25% less at the median than apps launched a few years ago
-- Among new apps with at least some revenue, 57.7% bring in between $1 and $1,000 per year
+- Top 10% of apps earn 95% of all revenue.
+- This concentration grew from 92.7% in 2023.
+- Newer apps already earn roughly 25% less at the median than apps launched a few years ago.
+- Among new apps with at least some revenue, 57.7% bring in between $1 and $1,000 per year.
 
 ## Strict interpretation rules for the skill
 
-- Only cite benchmark claims that appear in this file or the source PDF.
-- Do not invent onboarding, copy, CTA, or experiment rules and present them as if they came from the PDF.
+- Only cite benchmark claims that appear in this file or the source benchmark document.
+- Do not invent onboarding, copy, CTA, or experiment rules and present them as if they came from the benchmark material.
 - You may derive hypotheses from these facts, but label them clearly as interpretation.
 - If the user asks for onboarding or paywall advice, separate:
-  - PDF-backed facts
-  - your interpretation for the target app
-- If app data conflicts with PDF benchmarks, prioritize app data and explain the contrast.
+  - benchmark-backed facts
+  - your interpretation for the target product
+- If app data conflicts with benchmark signals, prioritize app data and explain the contrast.
 
-## What the PDF does NOT explicitly give us
+## What the benchmark document does NOT explicitly give us
 
-The extracted benchmark pages do not provide a literal full playbook for:
+The extracted pages do not provide a literal full playbook for:
 - exact onboarding gate timing rules
 - exact CTA wording rules
 - exact paywall layout formulas
 - exact experiment prioritization framework
 
-Those can still be inferred later, but they must be presented as interpretation, not as direct PDF truth.
+Those can still be inferred later, but they must be presented as interpretation, not as direct benchmark truth.

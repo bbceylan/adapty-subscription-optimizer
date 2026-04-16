@@ -1,6 +1,6 @@
-# Adapty Subscription Improvement Checklist
+# Subscription Improvement Checklist
 
-Use this checklist after reviewing an Adapty export, dashboard screenshot, or manually pasted metrics.
+Use this checklist after reviewing a subscription report, dashboard screenshot, or manually pasted metrics.
 
 ## 1. Funnel health
 
@@ -10,7 +10,7 @@ Check these stages if data is available:
 - purchase started
 - purchase completed
 - renewal
-- churn / cancellation / refund
+- churn, cancellation, or refund
 
 Questions to answer:
 - Where is the biggest drop-off?
@@ -41,10 +41,10 @@ Common improvements:
 Review:
 - headline clarity
 - benefit specificity
-- proof/trust elements
+- proof or trust elements
 - CTA clarity
 - price framing
-- restore / terms / privacy presence
+- restore, terms, or privacy presence
 
 Common improvements:
 - make outcome clearer
@@ -59,23 +59,23 @@ Check whether the paywall is shown:
 - too early
 - too late
 - after low intent actions
-- before user understands value
+- before the user understands value
 - at the strongest moment of intent
 
 Common improvements:
 - move paywall to a more motivated moment
 - add contextual trigger copy
 - test onboarding gate vs feature gate vs mixed model
-- personalize copy by trigger source if app architecture supports it
+- personalize copy by trigger source if product architecture supports it
 
 ## 5. Pricing and geography
 
 Check:
-- storefront/country skew
+- storefront or country skew
 - low-performing territories
 - weak PPP alignment
 - unusual refund or churn pockets
-- platform skew between iOS and Android
+- platform skew between iOS and Android or web
 
 Common improvements:
 - localize pricing presentation
@@ -86,26 +86,26 @@ Common improvements:
 
 Check:
 - trial-to-paid conversion
-- D7 / D30 retention if available
+- D7 or D30 retention if available
 - renewal rate by product
 - churn reasons if available
 - refund concentration
 
 Interpretation:
-- high install-to-trial + weak trial-to-paid usually means promise too broad or activation too weak
-- high conversion + weak renewal usually means poor retained value or bad expectation setting
-- strong annual conversion + weak retention can still be acceptable if refunds remain low, but review promise realism
+- high install-to-trial plus weak trial-to-paid usually means promise too broad or activation too weak
+- high conversion plus weak renewal usually means poor retained value or bad expectation setting
+- strong annual conversion plus weak retention can still be acceptable if refunds remain low, but review promise realism
 
 ## 7. Implementation mapping
 
 Translate findings into one of these buckets:
 - copy change
-- layout/UI change
-- package/product change
+- layout or UI change
+- package or product change
 - trigger logic change
 - experiment setup change
 - analytics instrumentation gap
-- backend/App Store / Play Console configuration gap
+- backend, store, or billing configuration gap
 
 ## 8. Implementation output format
 
@@ -113,8 +113,8 @@ When acting on findings, produce:
 1. executive summary
 2. top 3 problems
 3. top 3 experiments
-4. required code/config changes
-5. risks / assumptions
+4. required code or configuration changes
+5. risks or assumptions
 6. next validation steps
 
 ## 9. Good experiment examples
@@ -132,7 +132,7 @@ Escalate when you see:
 - paywall copy misstates billing or trial behavior
 - pricing on screen does not match product metadata
 - annual plan is mathematically or visually confusing
-- missing restore / privacy / terms links
+- missing restore, privacy, or terms links
 - purchase success is low despite high paywall taps
 - retention collapses after trial end
 - analytics events are missing or inconsistent, making diagnosis unreliable

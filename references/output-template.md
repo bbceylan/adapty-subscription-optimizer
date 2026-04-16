@@ -5,11 +5,11 @@ Use this structure for every substantial analysis.
 ## 1. Executive summary
 - one-paragraph bottom line
 
-## 2. PDF-backed benchmark facts
-- only facts from `adapty-benchmark-facts.md`
+## 2. Benchmark-backed facts
+- only facts from `subscription-benchmark-facts.md`
 
-## 3. App-specific interpretation
-- explain how the app likely fits or differs
+## 3. Product-specific interpretation
+- explain how the product likely fits or differs
 
 ## 4. Top 3 problems
 - ranked, evidence-backed
@@ -26,12 +26,12 @@ For each item include:
 - CTA tap
 - trial started if relevant
 - purchase completed
-- renewal / churn / refund
+- renewal, churn, or refund
 - activation impact if onboarding is touched
 
 ## 7. Implementation map
 - files or systems to update
-- app/store/console dependencies
+- app, web, store, or billing dependencies
 
 ## 8. Confidence and assumptions
 - what is confirmed
